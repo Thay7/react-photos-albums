@@ -6,13 +6,22 @@ const http = axios.create({
 
 export const api = {
     getAlbums: async () => {
-        let response = await http.get('/albums')
-        return response.data
-     },
-
-     getAlbumSingle: async () => {
+    try {
+    let response = await http.get('/albums')
+    return response.data
+    }
+    catch(e) {
+      alert('erro')
+    }
+    },
+   getAlbumSingle: async () => {
+    try {
       let response = await http.get('/albums/1')
-      return response.data
-     }
-
-    } 
+    return response.data
+    }
+    catch(e) {
+      alert('erro')
+    }
+   }
+   
+} 

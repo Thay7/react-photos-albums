@@ -11,9 +11,9 @@ export const MainRoutes = () => {
     return useRoutes([
         {path: '/', element: <Home/>},
         {path: '/albums', element: <Albums/>},
-        {path: '/albums/:id', element: <AlbumSingle/>},
+        {path: '/albums/1', element: <AlbumSingle/>},
+        {path: '/albums/1/photos', element: <Photos/> }
     ])
-   
 }
 
 // https://jsonplaceholder.typicode.com/albums

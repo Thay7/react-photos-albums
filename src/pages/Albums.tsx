@@ -1,37 +1,37 @@
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
+
 import { api } from "../api"
 import { AlbumsType } from '../types/AlbumsType'
-import { Link } from 'react-router-dom'
 
 export const Albums = () => {
     const [albums, setAlbums] = useState<AlbumsType[]>([])
-    const [loading, setLoading] = useState(false)
+
+    const loadAlbums = async () => {
+        let json = await api.getAlbums()
+        setAlbums(json)
+    } 
 
     useEffect(() => {
         loadAlbums()
     }, [])
 
-    const loadAlbums = async () => {
-        setLoading(true)
-        let json = await api.getAlbums()
-        setLoading(false)
-        setAlbums(json)
-    } 
-
     return (
         <div>
             {albums.map((item, index) => (
-                <div style={{
-                 border: '2px solid #000',
-                 padding: '10px', 
-                 marginBottom: '5px', 
-                 cursor: 'pointer'}}>
-                    <Link 
-                     style={{textDecoration: 'none',
-                     color: '#000'}} to="/albums/:slug">
+                <Link 
+                 style={{textDecoration: 'none',
+                 color: '#000', fontWeight: 'bold'}} to="/albums/1">
+                    <div key={index} style={{
+                    border: '1px solid #000',
+                    borderRadius: '10px',
+                    padding: '10px', 
+                    marginBottom: '5px', 
+                    cursor: 'pointer',
+                    }}>
                     {item.title}
-                    </Link>
-                </div>
+                    </div>
+                </Link>
             ))}
         </div>
     )
