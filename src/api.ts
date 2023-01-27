@@ -11,7 +11,7 @@ export const api = {
     return response.data
     }
     catch(e) {
-      alert('erro')
+      alert('Erro na requisição')
     }
     },
    getAlbumSingle: async () => {
@@ -20,7 +20,24 @@ export const api = {
     return response.data
     }
     catch(e) {
-      alert('erro')
+      alert('Erro na requisição')
+    }
+   },
+   getPhotos: async (id: any) => {
+    try {
+      let response = await http.get(`/albums/${id}/photos`)
+      return response.data
+    }
+    catch(e) {
+      alert('Erro na requisição')
+    }
+   },
+   getPhotoSingle: async (id: any) => {
+    try {
+      let response = await http.get(`/photos/${id}`)
+      return response.data
+    } catch {
+      alert('Erro na requisição!')
     }
    }
    

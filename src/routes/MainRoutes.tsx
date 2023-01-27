@@ -2,7 +2,6 @@ import { useRoutes } from 'react-router-dom'
 
 import { Home } from '../pages/Home'
 import { Albums } from '../pages/Albums'
-import { AlbumSingle } from '../pages/AlbumSingle'
 import { Photos } from '../pages/Photos'
 import { PhotoSingle } from '../pages/PhotoSingle'
 import { NotFound } from '../pages/NotFound'
@@ -10,9 +9,9 @@ import { NotFound } from '../pages/NotFound'
 export const MainRoutes = () => {
     return useRoutes([
         {path: '/', element: <Home/>},
-        {path: '/albums', element: <Albums/>},
-        {path: '/albums/1', element: <AlbumSingle/>},
-        {path: '/albums/1/photos', element: <Photos/> }
+        {path: '/albums/', element: <Albums/>},
+        {path: '/albums/:id', element: <Photos/> },
+        {path: '/photos/:id', element: <PhotoSingle/> },
     ])
 }
 

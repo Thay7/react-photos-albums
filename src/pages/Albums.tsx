@@ -10,7 +10,7 @@ export const Albums = () => {
     const loadAlbums = async () => {
         let json = await api.getAlbums()
         setAlbums(json)
-    } 
+    }
 
     useEffect(() => {
         loadAlbums()
@@ -19,17 +19,20 @@ export const Albums = () => {
     return (
         <div>
             {albums.map((item, index) => (
-                <Link 
-                 style={{textDecoration: 'none',
-                 color: '#000', fontWeight: 'bold'}} to="/albums/1">
+                <Link to={`/albums/${item.id}`}
+                    style={{
+                        textDecoration: 'none',
+                        color: '#000', fontWeight: 'bold'
+                    }}
+                >
                     <div key={index} style={{
-                    border: '1px solid #000',
-                    borderRadius: '10px',
-                    padding: '10px', 
-                    marginBottom: '5px', 
-                    cursor: 'pointer',
+                        border: '1px solid #000',
+                        borderRadius: '10px',
+                        padding: '10px',
+                        marginBottom: '5px',
+                        cursor: 'pointer',
                     }}>
-                    {item.title}
+                        {item.title}
                     </div>
                 </Link>
             ))}
