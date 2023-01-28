@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { api } from "../api"
 import { AlbumsType } from '../types/AlbumsType'
 
-export const Albums = () => {
+export const AlbumsList = () => {
     const [albums, setAlbums] = useState<AlbumsType[]>([])
 
     const loadAlbums = async () => {

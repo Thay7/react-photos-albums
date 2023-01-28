@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { api } from "../api"
+import { useParams, useNavigate } from "react-router-dom"
 
+import { api } from "../api"
 import { PhotosType } from "../types/PhotosType"
 
 export const PhotoSingle = () => {
-    const [photoSingle, setPhotoSingle] = useState<PhotosType[]>([])
+    const [photoSingle, setPhotoSingle] = useState<PhotosType>()
     const params = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadPhotoSingle()
@@ -17,13 +18,18 @@ export const PhotoSingle = () => {
         setPhotoSingle(json)
     }
 
+    const handleBackButton = () =>
+        navigate(-1)
+
     return (
-        <div>
-            {photoSingle.map((item, index) => (
-                <div key={index}>
-                    <p>{item.title}</p>
-                </div>
-            ))}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <button onClick={handleBackButton} style={{
+                border: 'none', borderRadius: '10px', backgroundColor: '#396d7c', color: '#FFF', padding: '10px', width: '100px', marginBottom: '15px', cursor: 'pointer'
+            }}
+            >
+                Voltar</button>
+            {photoSingle?.title}
+            <img style={{ width: '500px', marginTop: '15px' }} src={photoSingle?.thumbnailUrl} alt="" />
         </div>
     )
 }

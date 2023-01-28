@@ -1,4 +1,4 @@
-export type PhotosType =  {
+export type PhotosType = {
     albumId: number;
     id: number;
     title: string;
