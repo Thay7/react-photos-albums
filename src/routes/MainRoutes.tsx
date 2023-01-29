@@ -12,5 +12,6 @@ export const MainRoutes = () => {
         { path: '/albums/', element: <AlbumsList /> },
         { path: '/albums/:id', element: <Photos /> },
         { path: '/albums/photos/:id', element: <PhotoSingle /> },
+        { path: '*', element: <NotFound/>}
     ])
 }
